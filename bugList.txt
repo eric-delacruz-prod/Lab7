@@ -1,0 +1,129 @@
+File: bugList.txt
+Author: Eric Delacruz
+Date: 4/26/19
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+Bug List:
+
+    - isEmpty() fails to return false after adding elements, therefore always returns true.
+    - addBack(int value) does not add to the back of the list but rather the front.
+    - addBack(int value) adds to the size of a list when given an invalid value.
+    - addFront(int value) adds to the size of a list when given an invalid value.
+    - removeBack() fails to remove an element when called
+    - removeFront() fails to remove an element when called
+    
+Analysis:
+
+    Based on these results i would wager that addBack(int value), removeBack(), and removeFront() 
+    all use isEmpty() to determine when to execute. Given that isEmpty() returns true at all times 
+    none of these functions are executing their intended actions. The functions addBack(int value) 
+    and addFront(int value) modify the size of the list when given an invalid value. This signals to 
+    me that there are other issues that modify the size of the list unknowingly.
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+Test 1: isEmpty() returns true for empty list
+Test 1: Success
+
+Test 2: isEmpty() returns false for after addBack
+Test 2: Failure
+
+Test 3: isEmpty() returns true for after removeBack
+Test 3: Success
+
+Test 4: isEmpty() returns false for after addFront
+Test 4: Failure
+
+Test 5: isEmpty() returns true for after removeFront
+Test 5: Success
+
+Test 6: size() returns 0 for empty list
+Test 6: Success
+
+Test 7: size() returns 1-10 after corresponding calls to addBack
+Test 7: Success
+
+Test 8: size() returns 1-10 after corresponding calls to addBack & removeBack
+Test 8: Failure
+
+Test 9: size() returns 1-10 after corresponding calls to addFront
+Test 9: Success
+
+Test 10: size() returns 1-10 after corresponding calls to addFront & removeFront
+Test 10: Failure
+
+Test 11: size() returns 1-10 after corresponding calls to addBack & addFront
+Test 11: Success
+
+Test 12: size() returns 1-10 after corresponding calls to addBack & removeFront
+Test 12: Failure
+
+Test 13: size() returns 1-10 after corresponding calls to addFront & removeBack
+Test 13: Failure
+
+Test 14: size() returns 1-10 after corresponding calls to addBack, addFront,removeBack, & removeFront
+Test 14: Failure
+
+Test 15: search returns false for empty list
+Test 15: Success
+
+Test 16: search returns false for list not containing value // Back
+Test 16: Success
+
+Test 17: search returns true for list containing value // Back
+Test 17: Success
+
+Test 18: search returns true for list containing duplicates of value // Back
+Test 18: Success
+
+Test 19: search returns true for list containing value and surrounding values // Back
+Test 19: Success
+
+Test 20: search returns true for list containing value // Front
+Test 20: Success
+
+Test 21: search returns true for list containing duplicates of value // Front
+Test 21: Success
+
+Test 22: search returns true for list containing value and surrounding values // Front
+Test 22: Success
+
+Test 23: search returns true for list containing value // Back & Front
+Test 23: Success
+
+Test 24: search returns true for list containing duplicates of value // Back & Front
+Test 24: Success
+
+Test 25: search returns true for list containing value and surrounding values // Back & Front
+Test 25: Success
+
+Test 26: addBack only accepts ints & doesn't effect size
+Test 26: Failure
+
+Test 27: last node is equal to the value passed in last valid call to addBack
+Test 27: Failure
+
+Test 28: addFront only accepts ints & doesn't effect size
+Test 28: Failure
+
+Test 29: first node is equal to the value passed in last valid call to addFront
+Test 29: Success
+
+Test 30: removeBack on an empty list returns false
+Test 30: Success
+
+Test 31: removeBack on an returns true when successful
+Test 31: Failure
+
+Test 32: first node is unchanged up to the last call to removeBack
+Test 32: Failure
+
+Test 33: removeFront on an empty list returns false
+Test 33: Success
+
+Test 34: removeFront on an returns true when successful
+Test 34: Failure
+
+Test 35: last node is unchanged up to the last call to removeFront
+Test 35: Failure
